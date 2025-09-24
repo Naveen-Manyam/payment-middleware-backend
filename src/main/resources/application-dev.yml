@@ -1,7 +1,7 @@
 # Development Environment Configuration
 spring:
   datasource:
-    url: jdbc:mysql://host.docker.internal:3306/dev_db
+    url: jdbc:mysql://host.docker.internal:3306/naveendb
     username: root
     password: Navfinx@250825
     driver-class-name: com.mysql.cj.jdbc.Driver
