@@ -45,11 +45,7 @@ Thumbs.db
 *.swo
 *~
 
-# Application specific
-application-*.yml
-application-*.properties
-!application.yml
-!application.properties
+
 
 # Temporary files
 *.tmp

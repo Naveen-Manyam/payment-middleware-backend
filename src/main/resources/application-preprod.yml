@@ -1,0 +1,96 @@
+# Pre-Production Environment Configuration
+spring:
+  datasource:
+    url: jdbc:mysql://preprod-db-host:3306/db_preprod
+    username: preprod_user
+    password: preprod_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+
+logging:
+  level:
+    com.phonepe.payment: WARN
+    org.springframework.web.reactive.function.client: WARN
+    reactor.netty.http.client: WARN
+    org.springframework: WARN
+    org.hibernate: WARN
+    org.apache: WARN
+    com.zaxxer.hikari: WARN
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+dqr:
+  phonepe:
+    saltKey: preprod-salt-key-here
+    saltIndex: 1
+    baseUrl: https://mercury-preprod.phonepe.com/enterprise
+    endpoint: /v3/qr/init
+    expiresIn: 1000
+    numeric: 0123456789
+    callback: https://preprod-callback.yourcompany.com/phonepe/callback
+    refundEndPoint: /v3/credit/backToSource
+    cancelEndPoint: /v3/charge/
+    cancelEndPointPath: /cancel
+    checkPaymentStatusEndPoint: /v3/transaction/
+    checkPaymentStatusEndPointPath: /status
+
+edc:
+  phonepe:
+    merchantType: OFFLINE_ORGANISED,
+    saltKey: preprod-salt-key-here
+    saltIndex: 1
+    baseUrl: https://mercury-preprod.phonepe.com/enterprise
+    endpoint: /v1/edc/transaction/init
+    expiresIn: 1000
+    numeric: 0123456789
+    callback: https://preprod-callback.yourcompany.com/phonepe/callback
+    checkPaymentStatusEndPoint: /v1/edc/transaction/
+    checkPaymentStatusEndPointPath: /status
+
+payment:
+  phonepe:
+    saltKey: preprod-salt-key-here
+    saltIndex: 1
+    baseUrl: https://mercury-preprod.phonepe.com/enterprise
+    endpoint: /v3/payLink/init
+    expiresIn: 1000
+    numeric: 0123456789
+    callback: https://preprod-callback.yourcompany.com/phonepe/callback
+
+static:
+  phonepe:
+    saltKey: preprod-salt-key-here
+    saltIndex: 1
+    baseUrl: https://mercury-preprod.phonepe.com/enterprise
+    endpoint: /v3/qr/transaction/list
+    metadataEndpoint: /v1/merchant/transaction/metadata
+    numeric: 0123456789
+    callback: https://preprod-callback.yourcompany.com/phonepe/callback
+
+collect:
+  phonepe:
+    saltKey: preprod-salt-key-here
+    saltIndex: 1
+    baseUrl: https://mercury-preprod.phonepe.com/enterprise
+    endpoint: /v3/charge
+    numeric: 0123456789
+    callback: https://preprod-callback.yourcompany.com/phonepe/callback
+
+phonepe:
+  api:
+    connection:
+      timeout: 45000
+    read:
+      timeout: 45000
+    write:
+      timeout: 45000
+    retry:
+      max-attempts: 5
+      initial-delay: 2000
