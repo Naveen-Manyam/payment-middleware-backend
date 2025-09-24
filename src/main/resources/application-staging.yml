@@ -1,10 +1,10 @@
 # Staging Environment Configuration
 spring:
   datasource:
-    url: jdbc:mysql://staging-db-host:3306/db_staging
+    url: jdbc:postgresql://host.docker.internal:5432/staging_db_47yg
     username: staging_user
-    password: staging_password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 7hCfQr0LILXp6l55qQbMa1bgVFOvPCIe
+    driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: false
     hibernate:

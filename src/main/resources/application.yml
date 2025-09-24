@@ -1,7 +1,7 @@
 # Main Application Configuration - Common settings across all profiles
 spring:
   profiles:
-    active: dev
+    active: staging
 
 logging:
   file:

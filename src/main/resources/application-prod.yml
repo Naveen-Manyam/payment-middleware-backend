@@ -1,10 +1,10 @@
 # Production Environment Configuration
 spring:
   datasource:
-    url: jdbc:mysql://prod-db-host:3306/db_prod
-    username: prod_user
-    password: prod_password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://host.docker.internal:5432/staging_db_47yg
+    username: staging_user
+    password: 7hCfQr0LILXp6l55qQbMa1bgVFOvPCIe
+    driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: false
     hibernate:
