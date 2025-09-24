@@ -1,7 +1,7 @@
 # Production Environment Configuration
 spring:
   datasource:
-    url: jdbc:postgresql://host.docker.internal:5432/staging_db_47yg
+    url: jdbc:postgresql://dpg-d39rpjmmcj7s739jdoqg-a:5432/staging_db_47yg
     username: staging_user
     password: 7hCfQr0LILXp6l55qQbMa1bgVFOvPCIe
     driver-class-name: org.postgresql.Driver
