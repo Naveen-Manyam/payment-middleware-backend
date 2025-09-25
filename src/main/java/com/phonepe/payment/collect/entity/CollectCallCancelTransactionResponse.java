@@ -82,7 +82,6 @@ public class CollectCallCancelTransactionResponse {
      */
     @Schema(description = "Detailed message about the cancellation result",
             example = "Transaction cancelled successfully")
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String message;
 }

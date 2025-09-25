@@ -112,7 +112,6 @@ public class CollectCallRefundTransactionRequest {
      */
     @Schema(description = "Reason or description for the refund",
             example = "Customer requested refund due to order cancellation")
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String message;
 

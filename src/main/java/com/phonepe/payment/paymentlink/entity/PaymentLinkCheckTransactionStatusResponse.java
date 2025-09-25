@@ -84,7 +84,6 @@ public class PaymentLinkCheckTransactionStatusResponse {
      */
     @Schema(description = "Detailed response message",
             example = "Transaction found successfully")
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String message;
 
