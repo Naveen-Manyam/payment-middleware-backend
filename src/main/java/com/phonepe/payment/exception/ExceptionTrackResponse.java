@@ -18,10 +18,8 @@ public class ExceptionTrackResponse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String message;
-    @Lob
     @Column(columnDefinition = "TEXT")
     private String exception;
     private LocalDateTime createdAt;
