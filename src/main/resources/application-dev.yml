@@ -1,4 +1,7 @@
-# Development Environment Configuration
+# Staging Environment Configuration
+server:
+  port: ${PORT:8080}
+
 spring:
   datasource:
     url: jdbc:postgresql://dpg-d39rpjmmcj7s739jdoqg-a:5432/staging_db_47yg
@@ -12,9 +15,9 @@ spring:
 
 logging:
   level:
-    com.phonepe.payment: DEBUG
-    org.springframework.web.reactive.function.client: DEBUG
-    reactor.netty.http.client: DEBUG
+    com.phonepe.payment: INFO
+    org.springframework.web.reactive.function.client: WARN
+    reactor.netty.http.client: WARN
     org.springframework: WARN
     org.hibernate: WARN
     org.apache: WARN
@@ -34,7 +37,7 @@ dqr:
     endpoint: /v3/qr/init
     expiresIn: 1000
     numeric: 0123456789
-    callback: https://webhook.site/432b4384-1da8-412f-9a27-e82b778b2ed2
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
     refundEndPoint: /v3/credit/backToSource
     cancelEndPoint: /v3/charge/
     cancelEndPointPath: /cancel
@@ -50,7 +53,7 @@ edc:
     endpoint: /v1/edc/transaction/init
     expiresIn: 1000
     numeric: 0123456789
-    callback: https://webhook.site/432b4384-1da8-412f-9a27-e82b778b2ed2
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
     checkPaymentStatusEndPoint: /v1/edc/transaction/
     checkPaymentStatusEndPointPath: /status
 
@@ -62,7 +65,7 @@ payment:
     endpoint: /v3/payLink/init
     expiresIn: 1000
     numeric: 0123456789
-    callback: https://webhook.site/432b4384-1da8-412f-9a27-e82b778b2ed2
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 static:
   phonepe:
@@ -72,7 +75,7 @@ static:
     endpoint: /v3/qr/transaction/list
     metadataEndpoint: /v1/merchant/transaction/metadata
     numeric: 0123456789
-    callback: https://webhook.site/432b4384-1da8-412f-9a27-e82b778b2ed2
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 collect:
   phonepe:
@@ -81,7 +84,7 @@ collect:
     baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/charge
     numeric: 0123456789
-    callback: https://webhook.site/432b4384-1da8-412f-9a27-e82b778b2ed2
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 phonepe:
   api:

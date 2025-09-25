@@ -1,4 +1,7 @@
 # Staging Environment Configuration
+server:
+  port: ${PORT:8080}
+
 spring:
   datasource:
     url: jdbc:postgresql://dpg-d39rpjmmcj7s739jdoqg-a:5432/staging_db_47yg
@@ -28,13 +31,13 @@ springdoc:
 
 dqr:
   phonepe:
-    saltKey: staging-salt-key-here
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://mercury-staging.phonepe.com/enterprise
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/qr/init
     expiresIn: 1000
     numeric: 0123456789
-    callback: https://staging-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
     refundEndPoint: /v3/credit/backToSource
     cancelEndPoint: /v3/charge/
     cancelEndPointPath: /cancel
@@ -44,44 +47,44 @@ dqr:
 edc:
   phonepe:
     merchantType: OFFLINE_ORGANISED,
-    saltKey: staging-salt-key-here
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://mercury-staging.phonepe.com/enterprise
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v1/edc/transaction/init
     expiresIn: 1000
     numeric: 0123456789
-    callback: https://staging-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
     checkPaymentStatusEndPoint: /v1/edc/transaction/
     checkPaymentStatusEndPointPath: /status
 
 payment:
   phonepe:
-    saltKey: staging-salt-key-here
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://mercury-staging.phonepe.com/enterprise
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/payLink/init
     expiresIn: 1000
     numeric: 0123456789
-    callback: https://staging-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 static:
   phonepe:
-    saltKey: staging-salt-key-here
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://mercury-staging.phonepe.com/enterprise
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/qr/transaction/list
     metadataEndpoint: /v1/merchant/transaction/metadata
     numeric: 0123456789
-    callback: https://staging-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 collect:
   phonepe:
-    saltKey: staging-salt-key-here
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://mercury-staging.phonepe.com/enterprise
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/charge
     numeric: 0123456789
-    callback: https://staging-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 phonepe:
   api:

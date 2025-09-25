@@ -1,8 +1,11 @@
 # Production Environment Configuration
+server:
+  port: ${PORT:8080}
+
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d39rpjmmcj7s739jdoqg-a:5432/staging_db_47yg
-    username: staging_user
+    url: jdbc:postgresql://dpg-d39rpjmmcj7s739jdoqg-a:5432/prod_db_47yg
+    username: prod_user
     password: 7hCfQr0LILXp6l55qQbMa1bgVFOvPCIe
     driver-class-name: org.postgresql.Driver
   jpa:
@@ -23,19 +26,19 @@ logging:
 
 springdoc:
   api-docs:
-    enabled: false
+    enabled: true
   swagger-ui:
-    enabled: false
+    enabled: true
 
 dqr:
   phonepe:
-    saltKey: ${PHONEPE_DQR_SALT_KEY}
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://api.phonepe.com/apis/hermes
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/qr/init
-    expiresIn: 3600
+    expiresIn: 1000
     numeric: 0123456789
-    callback: https://prod-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
     refundEndPoint: /v3/credit/backToSource
     cancelEndPoint: /v3/charge/
     cancelEndPointPath: /cancel
@@ -45,44 +48,44 @@ dqr:
 edc:
   phonepe:
     merchantType: OFFLINE_ORGANISED,
-    saltKey: ${PHONEPE_EDC_SALT_KEY}
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://api.phonepe.com/apis/hermes
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v1/edc/transaction/init
-    expiresIn: 3600
+    expiresIn: 1000
     numeric: 0123456789
-    callback: https://prod-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
     checkPaymentStatusEndPoint: /v1/edc/transaction/
     checkPaymentStatusEndPointPath: /status
 
 payment:
   phonepe:
-    saltKey: ${PHONEPE_PAYMENT_SALT_KEY}
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://api.phonepe.com/apis/hermes
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/payLink/init
-    expiresIn: 3600
+    expiresIn: 1000
     numeric: 0123456789
-    callback: https://prod-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 static:
   phonepe:
-    saltKey: ${PHONEPE_STATIC_SALT_KEY}
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://api.phonepe.com/apis/hermes
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/qr/transaction/list
     metadataEndpoint: /v1/merchant/transaction/metadata
     numeric: 0123456789
-    callback: https://prod-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 collect:
   phonepe:
-    saltKey: ${PHONEPE_COLLECT_SALT_KEY}
+    saltKey: d07b3506-be23-44eb-95e8-2c4ab57bde62
     saltIndex: 1
-    baseUrl: https://api.phonepe.com/apis/hermes
+    baseUrl: https://mercury-uat.phonepe.com/enterprise-sandbox
     endpoint: /v3/charge
     numeric: 0123456789
-    callback: https://prod-callback.yourcompany.com/phonepe/callback
+    callback: https://payment-middleware-backend.onrender.com/api/phonepe/s2s-callback
 
 phonepe:
   api:
