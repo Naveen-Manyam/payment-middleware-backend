@@ -9,7 +9,7 @@ spring:
     password: 7hCfQr0LILXp6l55qQbMa1bgVFOvPCIe
     driver-class-name: org.postgresql.Driver
   jpa:
-    show-sql: false
+    show-sql: true
     hibernate:
       ddl-auto: update
 
@@ -90,11 +90,17 @@ collect:
 phonepe:
   api:
     connection:
-      timeout: 60000
+      timeout: 10000  # Reduced to 10s for faster failure detection
+      pool:
+        max-connections: 500
+        pending-acquire-max: 1000
+        max-idle-time: 45000  # Keep connections warm longer (45s)
+        max-life-time: 300000  # 5 minutes max lifetime
+        evict-interval: 60000  # Check every 60s (less overhead)
     read:
-      timeout: 60000
+      timeout: 30000
     write:
-      timeout: 60000
+      timeout: 10000  # Reduced to 10s for faster failure detection
     retry:
-      max-attempts: 5
-      initial-delay: 3000
+      max-attempts: 2  # Reduced to 2 attempts (1 retry) for faster failure
+      initial-delay: 500  # Faster retry: 500ms instead of 1000ms
